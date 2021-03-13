@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_flux/flutter_flux.dart';
 import './stores.dart';
 import 'coindetailpage.dart';
@@ -80,8 +78,7 @@ class _CoinWidgetState extends State<CoinWidget> {
               child: ListTile(
                 title:Text(widget.coin.name),
                 leading: CircleAvatar(
-                  child: widget.coin.id == "DOT" || widget.coin.id =="ATOM" ? Image.network(widget.coin.logoURL):
-                   SvgPicture.network(widget.coin.logoURL),
+                  child: Image.asset('assets/coin-icons/'+widget.coin.id.toLowerCase()+'.png'),
                 ),
                 subtitle: Text(widget.coin.id+"/USDT"),
                 

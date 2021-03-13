@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import './stores.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
-import 'package:intl/intl.dart';
 
 String graphInterval = "daily";
 
@@ -19,22 +14,11 @@ class CoinScreenIn extends StatefulWidget {
 
 class DataPoint {
   double value;
-  String date;
+  DateTime date;
 
   DataPoint(double value, String date, String interval) {
     this.value = value;
-    DateTime timeObj = DateTime.parse(date);
-    if(interval == "yearly")
-    date = DateFormat('d/MMM/yyy').format(timeObj);
-
-    else if(interval =="weekly")
-    date = DateFormat('d/MMM').format(timeObj);
-
-    else if(interval =="monthly")
-    date = DateFormat('d/MMM').format(timeObj);
-    else 
-    date = DateFormat('d/h a').format(timeObj);
-    this.date = date;
+    this.date = DateTime.parse(date);
   }
 }
 
@@ -44,7 +28,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
 
 
   List<DataPoint> getGraphData() {
-    List<DataPoint> graphData = new List();
+    List<DataPoint> graphData = [];
     List<double> price = priceParser();
     List<String> date = getDate();
     for (int i = 0; i < price.length; i++)
@@ -54,7 +38,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
   }
 
   List<double> priceParser() {
-    List<double> list = new List();
+    List<double> list = [];
     if (graphInterval == "daily") {
       for (String i in widget.coin.sparklineDaily.prices) {
         list.add(double.parse(i));
@@ -78,8 +62,30 @@ class _CoinScreenState extends State<CoinScreenIn> {
     }
   }
 
+  DateTimeAxis getXaxis(String interval){
+    if(interval == "daily"){
+      return DateTimeAxis(
+          intervalType: DateTimeIntervalType.hours,
+                            interval: 2);
+    }
+    else if(interval == "weekly"){
+      return DateTimeAxis(
+          intervalType: DateTimeIntervalType.days,
+                            interval: 1);
+    }
+    else if(interval == "monthly"){
+      return DateTimeAxis(
+          intervalType: DateTimeIntervalType.days,
+                            interval: 4);
+    }
+    else if(interval == "yearly"){
+      return DateTimeAxis(
+          intervalType: DateTimeIntervalType.months,
+                            interval: 2);
+    }
+  }
   List<String> getDate() {
-    List<String> list = new List();
+    List<String> list = [];
     if (graphInterval == "daily") {
       for (String i in widget.coin.sparklineDaily.timeStamps) {
         list.add(i);
@@ -132,7 +138,6 @@ class _CoinScreenState extends State<CoinScreenIn> {
     return false;
   }
 
-  static const _goldenColor = Color(0xFFFFD700);
   static const _lightColor = Color(0xFFFfcfaf1);
 
   Widget buildTextField(String label, String prefix,
@@ -153,7 +158,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
 
   Widget sparklineGraph(String interval) {
     return SfCartesianChart(
-        primaryXAxis: CategoryAxis(),
+        primaryXAxis: getXaxis(interval),
         primaryYAxis: NumericAxis(),
         // Chart title
         title: ChartTitle(text: interval[0].toUpperCase()+interval.substring(1) + " " + widget.coin.name + " Chart"),
@@ -163,10 +168,10 @@ class _CoinScreenState extends State<CoinScreenIn> {
 
         //tooltipBehavior: TooltipBehavior(enable: true),
         crosshairBehavior: CrosshairBehavior(enable: true),
-        series: <ChartSeries<DataPoint, String>>[
-          LineSeries<DataPoint, String>(
+        series: <ChartSeries<DataPoint, DateTime>>[
+          LineSeries<DataPoint, DateTime>(
               dataSource: getGraphData(),
-              xValueMapper: (DataPoint point, _) => point.date.toString(),
+              xValueMapper: (DataPoint point, _) => point.date.toLocal(),
               yValueMapper: (DataPoint point, _) => point.value,
               name: widget.coin.name + " Price",
               // Enable data label
@@ -193,10 +198,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
                         title: Text(
                             "\$${widget.coin.priceUSD.toStringAsFixed(3)}"),
                         leading: CircleAvatar(
-                          child: widget.coin.id == "DOT" ||
-                                  widget.coin.id == "ATOM"
-                              ? Image.network(widget.coin.logoURL)
-                              : SvgPicture.network(widget.coin.logoURL),
+                          child: Image.asset('assets/coin-icons/'+widget.coin.id.toLowerCase()+'.png')
                         ),
                         subtitle: Text(
                             widget.coin.oneDayChanges.price_change_pct > 0
@@ -244,6 +246,12 @@ class _CoinScreenState extends State<CoinScreenIn> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ToggleButtons(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    borderColor: Colors.deepPurple.shade900,
+                    fillColor: Colors.deepPurple.shade900,
+                    selectedColor: Colors.white,
+                    selectedBorderColor: Colors.deepPurple.shade900,
+                    borderWidth: 2,
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(
@@ -291,7 +299,6 @@ class _CoinScreenState extends State<CoinScreenIn> {
                   ),
                 ],
               ),
-
               //optional color Color(0xff232d37)
               //24H STATISTICS SECTION
               SizedBox(

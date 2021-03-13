@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -83,7 +82,6 @@ class Coin {
   double average24h;
 
   final String name;
-  final String logoURL;
 
   DayChanges oneDayChanges;
   DayChanges sevenDayChanges;
@@ -97,7 +95,6 @@ class Coin {
       {this.id,
       this.priceUSD,
       this.name,
-      this.logoURL,
       this.oneDayChanges,
       this.sevenDayChanges,
       this.thirtyDayChanges});
@@ -106,7 +103,6 @@ class Coin {
       : id = json['id'],
         priceUSD = double.parse(json['price']),
         name = json['name'],
-        logoURL = json['logo_url'],
         oneDayChanges = DayChanges.fromJson(json['1d']),
         sevenDayChanges = DayChanges.fromJson(json['7d']),
         thirtyDayChanges = DayChanges.fromJson(json['30d']);
