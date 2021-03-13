@@ -101,7 +101,6 @@ class _CoinWidgetState extends State<CoinWidget> {
                         Text((widget.coin.oneDayChanges.price_change_pct*100).toStringAsFixed(2)+"%", style: TextStyle(color: widget.coin.oneDayChanges.price_change_pct > 0 ? Colors.lightGreenAccent[400]:Colors.deepOrangeAccent[700])),
                       ]
                     ),
-                    
                   ]
                 ),
 

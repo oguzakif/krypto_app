@@ -46,6 +46,7 @@ class SparklineInterval {
     this.prices,
   });
 
+
   SparklineInterval.fromJson(Map json)
       : currencyId = json['currency'],
         timeStamps = json['timestamps'],
@@ -70,6 +71,8 @@ class CoinStats {
         volume24h = double.parse(json["volume"]),
         id = json["symbol"];
 }
+
+
 
 class Coin {
   final String id;
@@ -293,6 +296,7 @@ class CoinStore extends Store {
   final List<Coin> _coins = <Coin>[];
 
   List<Coin> get coins => List<Coin>.from(_coins);
+
 }
 
 final Action loadCoinsAction = Action();
