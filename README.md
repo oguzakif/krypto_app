@@ -1,6 +1,7 @@
 # krypto_app
 
-A new Flutter project.
+Krypto-Project is a project that displays the most used crypto currency values.
+This project is developed by three students and you can contact them with their contact informations.
 
 ## Getting Started
 

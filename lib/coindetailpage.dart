@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import './stores.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-String graphInterval = "daily";
 
 class CoinScreenIn extends StatefulWidget {
   CoinScreenIn(this.coin);
@@ -25,6 +24,7 @@ class DataPoint {
 class _CoinScreenState extends State<CoinScreenIn> {
   final coinController = TextEditingController();
   final usdController = TextEditingController();
+  String graphInterval = "daily";
 
 
   List<DataPoint> getGraphData() {
@@ -54,7 +54,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
         list.add(double.parse(i));
       }
       return list;
-    } else {
+    } else if(graphInterval == "yearly"){
       for (String i in widget.coin.sparklineYearly.prices) {
         list.add(double.parse(i));
       }
@@ -101,7 +101,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
         list.add(i);
       }
       return list;
-    } else {
+    } else if(graphInterval == "yearly"){
       for (String i in widget.coin.sparklineYearly.timeStamps) {
         list.add(i);
       }
@@ -286,7 +286,7 @@ class _CoinScreenState extends State<CoinScreenIn> {
                               graphInterval = "weekly";
                             else if (buttonIndex == 2)
                               graphInterval = "monthly";
-                            else
+                            else if(buttonIndex == 3)
                               graphInterval = "yearly";
                             widget.isSelected[buttonIndex] = true;
                           } else {
