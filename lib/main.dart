@@ -1,5 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:krypto_app/splashScreen.dart';
+import 'dart:async';
 import 'package:flutter_flux/flutter_flux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:krypto_app/info.dart';
@@ -25,6 +26,7 @@ class DashBoard extends StatelessWidget {
     );
   }
 }
+
 
 class HomeScreen extends StatefulWidget {
   @override
