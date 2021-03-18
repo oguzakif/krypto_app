@@ -167,7 +167,8 @@ class _CoinScreenState extends State<CoinScreenIn> {
         // Enable tooltip
 
         //tooltipBehavior: TooltipBehavior(enable: true),
-        crosshairBehavior: CrosshairBehavior(enable: true),
+        trackballBehavior: TrackballBehavior(enable: true, tooltipDisplayMode: TrackballDisplayMode.groupAllPoints, shouldAlwaysShow: true),
+        //crosshairBehavior: CrosshairBehavior(enable: true),
         series: <ChartSeries<DataPoint, DateTime>>[
           LineSeries<DataPoint, DateTime>(
               dataSource: getGraphData(),

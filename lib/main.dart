@@ -43,7 +43,7 @@ class HomeScreenState extends State<HomeScreen>
     // TODO: implement initState
     super.initState();
     store = listenToStore(coinStoreToken);
-    Timer.periodic(Duration(seconds: 2), (_) => loadCoinsAction.call());
+    Timer.periodic(Duration(seconds: 3), (_) => loadCoinsAction.call());
   }
 
   void onTabTapped(int index) {
