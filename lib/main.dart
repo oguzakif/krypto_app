@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:krypto_app/splashScreen.dart';
 import 'dart:async';
 import 'package:flutter_flux/flutter_flux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
