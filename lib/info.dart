@@ -32,7 +32,7 @@ class _InfoScreenState extends State<Info> {
       padding: EdgeInsets.all(18.0),
       decoration:
           BoxDecoration(border: Border.all(width: 15.0), color: Colors.black45),
-      child: Wrap(
+      child: ListView(
         children: [
           Card(
               color: Colors.deepPurple.shade900,
@@ -55,7 +55,6 @@ class _InfoScreenState extends State<Info> {
                       ],
                     ),
                   ]))),
-          SizedBox(height: 130),
           Card(
             color: Colors.deepPurple.shade900,
             elevation: 3,
@@ -132,7 +131,6 @@ class _InfoScreenState extends State<Info> {
                   ],
                 )),
           ),
-          SizedBox(height: 10),
           Card(
               color: Colors.deepPurple.shade900,
               elevation: 3,
