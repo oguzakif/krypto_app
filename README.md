@@ -3,12 +3,12 @@
 Krypto-Project is a project that displays the most used crypto currency values.
 This project is developed by three students and you can contact them with their contact informations.
 
-Main Screen -> ![main_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/main-screen.png)
+Main Screen -> ![main_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/main-screen.png = 360x489)
 
-Detail Page -> ![detail1_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/detail-page-1.png)
-               ![detail2_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/detail-page-2.png)
+Detail Page -> ![detail1_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/detail-page-1.png = 360x489)
+               ![detail2_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/detail-page-2.png = 360x489)
 
-İnfo Page -> ![info_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/info.png)
+İnfo Page -> ![info_screenshot](https://github.com/oguzakif/krypto_app/blob/master/screenshots/info.png = 360x489)
 
 
 
