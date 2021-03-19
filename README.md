@@ -10,7 +10,7 @@ This project is developed by three students and you can contact them with their 
 <img src="https://github.com/oguzakif/krypto_app/blob/master/screenshots/detail-page-1.png" alt="detail1_screenshot" width="40%"/> <img src="https://github.com/oguzakif/krypto_app/blob/master/screenshots/detail-page-2.png" alt="detail2_screenshot" width="40%"/>   
 
 
-* ## İnfo Page 
+* ## Info Page 
 <img src="https://github.com/oguzakif/krypto_app/blob/master/screenshots/info.png" alt="info_screenshot" width="40%"/>
 
 
