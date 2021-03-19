@@ -159,7 +159,7 @@ class Coin {
 
 class CoinRepo {
   Future<Stream<Coin>> getCoins() async {
-    String url = "https://heroku-vue-express.herokuapp.com/coins/relevant";
+    String url = "https://krypto-api.herokuapp.com/coins/relevant";
     var client = http.Client();
     var streamedRes = await client.send(http.Request('get', Uri.parse(url)));
 
@@ -176,7 +176,7 @@ class SparklineIntervalRepo {
       String id, String interval) async {
     var client = http.Client();
     String url =
-        "https://heroku-vue-express.herokuapp.com/sparkline/" + interval + id;
+        "https://krypto-api.herokuapp.com/sparkline/" + interval + id;
     var streamedRes = await client.send(http.Request('get', Uri.parse(url)));
 
     return streamedRes.stream
@@ -189,7 +189,7 @@ class SparklineIntervalRepo {
 class StatsRepo {
   Future<Stream<CoinStats>> getCoinStats(String id) async {
     var client = http.Client();
-    String url = "https://heroku-vue-express.herokuapp.com/stats/" + id;
+    String url = "https://krypto-api.herokuapp.com/stats/" + id;
     var streamedRes = await client.send(http.Request('get', Uri.parse(url)));
 
     return streamedRes.stream
@@ -216,7 +216,7 @@ class CoinStore extends Store {
     "ATOM",
     "TRX",
     "EOS",
-    "XTZ",
+    "CHZ",
     "NEO",
     "DASH"
   ];
